@@ -22,6 +22,12 @@ You can install apko from Homebrew:
 brew install apko
 ```
 
+You can also install apko from polyglot [mise](https://github.com/jdx/mise) software manager tool specifying the version you want (here latest in sample):
+
+```shell
+mise use -g apko@latest
+```
+
 You can also install apko from source:
 
 ```shell
@@ -80,7 +86,7 @@ or, with Docker:
 docker run -v "$PWD":/work cgr.dev/chainguard/apko build examples/alpine-base.yaml apko-alpine:test apko-alpine.tar
 ```
 
-You can then load the generated tar image into a Docker environment:
+You can then load the generated tar image, based on your architecture, into a Docker environment:
 
 ```shell
 docker load < apko-alpine.tar
@@ -91,7 +97,7 @@ Loaded image: apko-alpine:test
 ```
 
 ```shell
-docker run -it apko-alpine:test
+docker run -it apko-alpine:test-(processor architecture)
 ```
 
 ```
@@ -109,7 +115,7 @@ See the [docs](./docs/apko_file.md) for details of the file format and the [exam
 
 ## Why
 
-apko was created by [Chainguard](https://www.chainguard.dev), who require secure and reproducible
+apko was created by [Chainguard](https://www.chainguard.dev), who requires secure and reproducible
 container images for their tooling. Speed is also a critical factor; Chainguard require images to be
 rebuilt constantly in response to new versions and patches.
 
